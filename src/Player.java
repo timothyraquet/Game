@@ -9,6 +9,7 @@ public class Player extends GameObject
 {
     private Random r;
     private Handler handler;
+    private static final int playerSide = 32;
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id);
@@ -21,8 +22,8 @@ public class Player extends GameObject
         x += velX;
         y += velY;
 
-        x = Game.clamp(x, 0, Game.WIDTH - 39);
-        y = Game.clamp(y, 0, Game.HEIGHT - 62);
+        x = Game.clamp(x, 0, Game.REAL_WIDTH - playerSide - 1);
+        y = Game.clamp(y, 0, Game.REAL_HEIGHT - playerSide - 1);
 
         collision();
     }

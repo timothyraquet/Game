@@ -8,13 +8,19 @@ import java.util.Random;
 public class BasicEnemy extends GameObject
 {
     private Random r;
+    private static final int enemySide = 16;
 
     public BasicEnemy(int x, int y, ID id)
     {
         super(x,y,id);
         r = new Random();
         velX = r.nextInt(10)-5;
+        while(velX == 0)
+            velX = r.nextInt(10)-5;
+
         velY = r.nextInt(10)-5;
+        while(velY == 0)
+            velY = r.nextInt(10)-5;
     }
 
     @Override
@@ -22,16 +28,16 @@ public class BasicEnemy extends GameObject
     {
         x += velX;
         y += velY;
-        if(x < 0 || x > Game.WIDTH - 21)
+        if(x < 0 || x > Game.REAL_WIDTH - enemySide - 1)
         {
             velX *= -1;
         }
-        if(y < 0 || y > Game.HEIGHT - 41)
+        if(y < 0 || y > Game.REAL_HEIGHT - enemySide - 1)
         {
             velY *= -1;
         }
-        x = Game.clamp(x,0,Game.WIDTH  - 20);
-        y = Game.clamp(y,0,Game.HEIGHT - 42);
+        x = Game.clamp(x,0,Game.REAL_WIDTH - enemySide - 1);
+        y = Game.clamp(y,0,Game.REAL_HEIGHT - enemySide -1);
     }
 
     @Override

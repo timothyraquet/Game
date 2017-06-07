@@ -12,6 +12,7 @@ public class Game extends Canvas implements Runnable
     private static final long serialVersionUID = -3503882522848276765L;
 
     public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
+    public static final int REAL_WIDTH = WIDTH - 6, REAL_HEIGHT = HEIGHT - 28;
     public static final int NUMBER_OF_ENEMIES = 1;
 
     private Thread thread;
@@ -34,7 +35,7 @@ public class Game extends Canvas implements Runnable
         spawn = new Spawn(handler,hud);
 
         handler.addObject(new Player(WIDTH / 2 - 16,HEIGHT / 2 - 16,ID.player, handler));
-        for(int i = 0; i < NUMBER_OF_ENEMIES; i++)
+        for(int i = 0; i < NUMBER_OF_ENEMIES; i++){}
             handler.addObject(new BasicEnemy(100,100,ID.enemy));
 
     }
